@@ -76,7 +76,9 @@ Example:
       $a->seekto('<div class="top">');
       do {
         $text=$a->search('<li>','','</li>');
-        echo "$text<br/>";
+        if ($text!==false) {
+            echo "$text<br/>";
+        }
       } while ($text!==false);
       
     ?>
