@@ -65,3 +65,18 @@ Search for $text and return true if it's found
 **strip_diacritics($x)**
 
 Strip some diacritic characters from $x. Returns result.
+
+Example:
+========
+
+<?php
+
+  $a=new Parser();
+  $a=fileread('http://somesite.com/somefile.html');
+  $a->seekto('<div class="top">');
+  do {
+    $text=$a->search('<li>','','</li>');
+    echo "$text<br/>";
+  } while ($text!==false);
+  
+?>
