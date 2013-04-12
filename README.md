@@ -70,9 +70,9 @@ Example:
 ========
 
     <?php
-    
+
       $a=new Parser();
-      $a=fileread('http://somesite.com/somefile.html');
+      $a->fileread('http://somesite.com/somefile.html');
       $a->seekto('<div class="top">');
       do {
         $text=$a->search('<li>','','</li>');
@@ -80,5 +80,5 @@ Example:
             echo "$text<br/>";
         }
       } while ($text!==false);
-      
+
     ?>
