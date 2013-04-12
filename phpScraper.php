@@ -9,7 +9,7 @@
     function error() {
       return $this->error;
     }
-    
+
     function filereset() {
       $this->posx=0;
     }
@@ -18,25 +18,25 @@
       $this->error=0;
 
       if (!$usecurl) {
-        $this->tmpx=@file_get_contents($file);        
+        $this->tmpx=@file_get_contents($file);
         if (!$this->tmpx) $this->error=1;
       } else {
-      
+
           $ch = curl_init();
 
           curl_setopt($ch,CURLOPT_USERAGENT,'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/535.1 (KHTML, like Gecko) Chrome/14.0.835.202 Safari/535.1');
           curl_setopt($ch,CURLOPT_URL,$file);
           curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
-/*          
+/*
           $cookie_file="/tmp/cookies.txt";
           curl_setopt($ch,CURLOPT_COOKIEJAR,$cookie_file);
           curl_setopt($ch,CURLOPT_COOKIEFILE,$cookie_file);
-*/          
+*/
           $this->tmpx=curl_exec($ch);
 
           curl_close($ch);
         }
-            
+
       $this->filereset();
 
       if ($sleep) sleep($sleep);
@@ -46,7 +46,7 @@
       $this->tmpx=$text;
       $this->filereset();
     }
-    
+
     function seekto($text1) {
       $f1=strpos($this->tmpx,$text1,$this->posx);
       if ($f1!==false) {
@@ -56,18 +56,18 @@
 
       } else return false;
     }
-    
+
     function getposition() {
       return $this->posx;
     }
-    
+
     function setposition($pos) {
       if ($pos<strlen($this->tmpx)) {
         $this->posx=$pos;
         return true;
-      } else return false;  
+      } else return false;
     }
-    
+
     function getfile() {
       return ($this->tmpx);
     }
@@ -76,8 +76,9 @@
 
       if ($dir=='forward') $f1=strpos($this->tmpx,$text1,$this->posx);
         else $f1=strrpos($this->tmpx,$text1,$this->posx);
-        
+
       if ($f1!==false) {
+		$nf=0;
         $this->posx=$f1+strlen($text1);
         if ($text2) {
           $f2=strpos($this->tmpx,$text2,$this->posx);
@@ -101,24 +102,24 @@
 
     }
 
-    function istext($text) {      
-    
+    function istext($text) {
+
       return (strpos($this->tmpx,$text)!==false?true:false);
-      
+
     }
   } // end parser
-  
+
   function strip_diacritics($x) {
 
     $dfrom=array(
       "\xc3\xae","\xc3\x8e",
       "\xc5\xa3","\xc5\xa2",
-      
+
       "\xc3\xab","\xc3\x8b",
       "\xc5\xa1","\xc5\xa0",
       "\xc5\xbc","\xc5\xbb",
       "\xc5\x82","\xc5\x81",
-      
+
       "\x26\x23\x32\x35\x39\x3b",
       "\xe3",
       "\x26\x23\x32\x35\x38\x3b",
@@ -126,7 +127,7 @@
       "\xe2",
       "\xc2",
       "\x26\x23\x33\x35\x31\x3b",
-      "\x26\x23\x33\x35\x30\x3b",  
+      "\x26\x23\x33\x35\x30\x3b",
       "\x26\x23\x33\x35\x35\x3b",
       "\x26\x23\x33\x35\x34\x3b",
       "\xee",
@@ -144,12 +145,12 @@
     $dto=array(
       "i","I",
       "t","T",
-      
+
       "e","E",
       "s","S",
       "z","Z",
-      "l","L",      
-      
+      "l","L",
+
       "a",
       "a",
       "A",
