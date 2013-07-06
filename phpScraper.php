@@ -78,7 +78,7 @@
         else $f1=strrpos($this->tmpx,$text1,$this->posx);
 
       if ($f1!==false) {
-		$nf=0;
+        $nf=0;
         $this->posx=$f1+strlen($text1);
         if ($text2) {
           $f2=strpos($this->tmpx,$text2,$this->posx);
