@@ -1,7 +1,7 @@
 phpScraper
 ==========
 
-A method that helps you extract information from a text (it can be an HTML page).
+A class that helps you extract information from a text (it can be an HTML page).
 
 Methods:
 
